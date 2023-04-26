@@ -4,6 +4,7 @@ import android.content.Intent
 import android.service.autofill.OnClickAction
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -38,7 +39,7 @@ fun SignUpScreen (){
 
     Box(
         modifier = Modifier
-            .padding(20.dp)
+            .padding(24.dp)
             .fillMaxSize()
             .background(Color.White)
     ) {
@@ -46,84 +47,58 @@ fun SignUpScreen (){
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 80.dp)
+                .padding(top = 59.dp)
         ) {
             Text(
-                text = "STRANS",
-                fontSize = 36.sp,
+                text = "Create an account",
+                fontSize = 26.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = Color.Black
             )
         }
 
-        Card(modifier = Modifier
-            .padding(top = 200.dp)
-            .clip(
-                RoundedCornerShape(
-                    topStart = 30.dp,
-                    topEnd = 30.dp,
-                    bottomStart = 0.dp,
-                    bottomEnd = 0.dp
-                )
-            )
-            .fillMaxWidth()
-            .height(600.dp)
-            .align(Alignment.Center),
-            backgroundColor = MaterialTheme.colors.surface,
-        ){
-            Column()
-            {
+            Column{
                 Row(horizontalArrangement = Arrangement.Center,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 5.dp, bottom = 20.dp)
+                        .padding(top = 89.dp, bottom = 20.dp)
                 ) {
                     Text(
-                        text = "REGISTER",
-                        fontSize = 24.sp,
+                        text = "Connect with your fiends today!",
+                        fontSize = 17.sp,
                         fontWeight = FontWeight.SemiBold,
-                        color = Color(29, 196, 206),
+                        color = Color.LightGray,
                     )
                 }
             }
             Column(modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 50.dp)){
+                .padding(top = 149.dp)){
                 OutlinedTextField(
-                    value = emailInput.toString(),
-                    onValueChange = { emailInput = it},
-                    label = { Text(text = "Email" ) },
+                    value = Username.toString(),
+                    onValueChange = { Username = it},
+                    label = { Text(text = "Enter Your Username" ) },
                     colors = TextFieldDefaults.outlinedTextFieldColors(
                         focusedBorderColor = Color(29, 196, 206),
                         unfocusedBorderColor = Color.Black,
                         focusedLabelColor = Color(29, 196, 206)
                     ),
-                    leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.Email,
-                            contentDescription = "Email"
-                        )
-                    },
+                    shape = RoundedCornerShape(10.dp),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 8.dp)
                 )
                 OutlinedTextField(
-                    value = Username.toString(),
-                    onValueChange = { Username = it },
-                    label = { Text(text = "Nama")},
+                    value = emailInput.toString(),
+                    onValueChange = { emailInput = it },
+                    label = { Text(text = "Enter Your Email")},
                     colors = TextFieldDefaults.outlinedTextFieldColors(
                         focusedBorderColor = Color(29, 196, 206),
                         unfocusedBorderColor = Color.Black,
                         focusedLabelColor = Color(29, 196, 206)
                     ),
-                    leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.Person,
-                            contentDescription = "Username"
-                        )
-                    },
+                    shape = RoundedCornerShape(10.dp),
                     visualTransformation = PasswordVisualTransformation(),
                     modifier = Modifier
                         .fillMaxWidth()
@@ -132,18 +107,13 @@ fun SignUpScreen (){
                 OutlinedTextField(
                     value = passwordInput.toString(),
                     onValueChange = { passwordInput = it },
-                    label = { Text(text = "Kata Sandi") },
+                    label = { Text(text = "Enter Your Password") },
                     colors = TextFieldDefaults.outlinedTextFieldColors(
                         focusedBorderColor = Color(29, 196, 206),
                         unfocusedBorderColor = Color.Black,
                         focusedLabelColor = Color(29, 196, 206)
                     ),
-                    leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.Lock,
-                            contentDescription = "Password"
-                        )
-                    },
+                    shape = RoundedCornerShape(10.dp),
                     visualTransformation = PasswordVisualTransformation(),
                     modifier = Modifier
                         .fillMaxWidth()
@@ -152,28 +122,48 @@ fun SignUpScreen (){
                 OutlinedTextField(
                     value = confirmPassword.toString(),
                     onValueChange = { confirmPassword = it },
-                    label = { Text(text = "Konfirmasi Kata Sandi") },
+                    label = { Text(text = "Confirm Your Passowrd") },
                     colors = TextFieldDefaults.outlinedTextFieldColors(
                         focusedBorderColor = Color(29, 196, 206),
                         unfocusedBorderColor = Color.Black,
                         focusedLabelColor = Color(29, 196, 206)
                     ),
-                    leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.Lock,
-                            contentDescription = "Confirm Password"
-                        )
-                    },
+                    shape = RoundedCornerShape(10.dp),
                     visualTransformation = PasswordVisualTransformation(),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 8.dp),
                 )
+                Button(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier
+                        .padding(top = 20.dp)
+                        .fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color(14, 100, 210),
+                        contentColor = Color.White
+                    ),
+                    shape = CutCornerShape(10)
+                ) {
+                    Text(
+                        text = "Sign Up",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                }
+
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    modifier = Modifier.padding(top = 200.dp)
+                ) {
+                    TextButton(onClick = { /*TODO*/ }) {
+                        Text(text = "ALready have an account? Login", color = Color.Black)
+                    }
+                }
             }
 
 
         }
-    }
 }
 
 
